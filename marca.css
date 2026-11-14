@@ -1,0 +1,29 @@
+/* ============================================================
+   Design system da marca · Sandro Dwarffy · TEST Success · 100kMMG
+   Gerado pela skill design-system-da-marca (seção 3.2 do Dossiê).
+   A página lê daqui as cores, as fontes e as formas.
+   Troque os valores, não os nomes.
+   Cores oficiais: #43ADE3 #000000 #58585A #858585. Tom: confiável, próxima, sem enrolação.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+:root {
+  /* Cores */
+  --cor: #43ADE3;          /* principal: botões, destaques */
+  --cor-texto-botao: #000000; /* branco sobre o azul não passa no contraste (2,5:1) */
+  --fundo: #FFFFFF;        /* fundo da página */
+  --fundo-2: #EEF7FC;      /* fundo das seções alternadas (azul bem claro) */
+  --texto: #000000;        /* texto principal e títulos */
+  --texto-2: #58585A;      /* texto de apoio */
+  --borda: #D6D6D6;
+  --cartao: #FFFFFF;
+
+  /* Fontes */
+  --fonte-titulo: "Open Sans", system-ui, -apple-system, sans-serif;
+  --fonte-texto: "Open Sans", system-ui, -apple-system, sans-serif;
+
+  /* Formas */
+  --raio: 10px;
+  --raio-grande: 16px;
+}

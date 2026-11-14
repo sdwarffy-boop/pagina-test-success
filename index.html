@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carregando…</title>
+  <meta name="description" content="">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="config.js"></script>
+  <style>
+    :root {
+      /* Valores de reserva, caso o marca.css não carregue */
+      --cor: #8A5A44; --cor-texto-botao: #FFFFFF; --fundo: #FBF8F4; --fundo-2: #F3EDE6;
+      --texto: #2B2420; --texto-2: #6B5F57; --borda: #E4DAD0; --cartao: #FFFFFF;
+      --fonte-titulo: Georgia, serif; --fonte-texto: system-ui, -apple-system, sans-serif;
+      --raio: 14px; --raio-grande: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fonte-texto);
+      background: var(--fundo);
+      color: var(--texto);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+    h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+    h2 { font-size: clamp(26px, 6vw, 32px); margin-bottom: 20px; }
+    section { padding: 56px 0; }
+    section.alt { background: var(--fundo-2); }
+    p + p { margin-top: 14px; }
+    .apoio { color: var(--texto-2); }
+
+    /* 1 · Hero */
+    .hero { padding: 48px 0 56px; }
+    .logo { display: block; height: 72px; width: auto; margin-bottom: 28px; }
+    .quem { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+    .quem img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+    .quem .inicial {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--cor); color: var(--cor-texto-botao);
+      display: grid; place-items: center; font-weight: 600; font-size: 20px;
+    }
+    .quem strong { display: block; font-size: 15px; }
+    .quem span { font-size: 14px; color: var(--texto-2); }
+    .hero h1 { font-size: clamp(32px, 8vw, 46px); margin-bottom: 18px; }
+    .hero .sub { font-size: 18px; color: var(--texto-2); margin-bottom: 32px; }
+
+    .botao {
+      display: block; width: 100%;
+      background: var(--cor); color: var(--cor-texto-botao);
+      border: 0; border-radius: var(--raio);
+      padding: 18px 20px; font: inherit; font-weight: 600; font-size: 17px; line-height: 1.3;
+      text-align: center; text-decoration: none; cursor: pointer;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .botao:hover { filter: brightness(1.08); }
+    .botao:active { transform: scale(.98); }
+    .botao[disabled] { opacity: .6; cursor: wait; }
+
+    /* 2 · Problema */
+    .lista { list-style: none; display: grid; gap: 14px; margin-top: 22px; }
+    .lista li {
+      background: var(--cartao); border: 1px solid var(--borda); border-radius: var(--raio);
+      padding: 18px 20px 18px 52px; position: relative; font-weight: 500;
+    }
+    .lista li::before {
+      content: ""; position: absolute; left: 20px; top: 24px;
+      width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--cor);
+    }
+    .fecho { margin-top: 26px; font-size: 18px; color: var(--texto-2); }
+
+    /* 3 · Resultado */
+    .resultado p { font-size: 19px; }
+
+    /* 4 · Como funciona */
+    .metodo-nome { display: inline-block; font-weight: 700; color: var(--texto); background: var(--cor); padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; letter-spacing: .06em; }
+    .etapas { list-style: none; counter-reset: etapa; display: grid; gap: 16px; margin-top: 24px; }
+    .etapas li {
+      counter-increment: etapa; background: var(--cartao); border: 1px solid var(--borda);
+      border-radius: var(--raio); padding: 18px 20px 18px 64px; position: relative;
+    }
+    .etapas li::before {
+      content: counter(etapa); position: absolute; left: 18px; top: 18px;
+      width: 32px; height: 32px; border-radius: 50%; background: var(--cor); color: var(--cor-texto-botao);
+      display: grid; place-items: center; font-weight: 600; font-size: 15px;
+    }
+    .etapas strong { display: block; margin-bottom: 2px; }
+    .etapas span { color: var(--texto-2); font-size: 16px; }
+
+    /* 5 · Prova */
+    .prova blockquote {
+      background: var(--cartao); border-left: 4px solid var(--cor);
+      border-radius: 0 var(--raio) var(--raio) 0;
+      padding: 20px 22px; margin-bottom: 14px; font-size: 17px;
+    }
+    .prova cite { display: block; margin-top: 10px; font-style: normal; font-size: 14px; color: var(--texto-2); }
+    .garantia {
+      margin-top: 18px; background: var(--cartao); border: 1.5px dashed var(--cor);
+      border-radius: var(--raio); padding: 20px 22px;
+    }
+    .garantia strong { display: block; margin-bottom: 6px; }
+
+    /* 6 · CTA final */
+    .cta .card {
+      background: var(--cartao); border: 1px solid var(--borda); border-radius: var(--raio-grande);
+      padding: 28px 22px;
+    }
+    .cta .card > p { margin-bottom: 22px; }
+    .urgencia { font-weight: 600; color: var(--texto); }
+    label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    input[type=text], input[type=tel] {
+      width: 100%; padding: 15px 16px; font: inherit;
+      border: 1.5px solid var(--borda); border-radius: 12px; background: var(--fundo);
+      margin-bottom: 18px; color: var(--texto);
+    }
+    input:focus { outline: none; border-color: var(--cor); background: var(--cartao); }
+    .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; font-weight: 400; color: var(--texto-2); margin-bottom: 22px; }
+    .consent input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--cor); flex-shrink: 0; }
+    .erro { color: #B3261E; font-size: 14px; margin: -10px 0 16px; display: none; }
+    .erro.on { display: block; }
+
+    footer { padding: 32px 0 48px; text-align: center; font-size: 13px; color: var(--texto-2); }
+    footer a { color: inherit; }
+    [hidden] { display: none !important; }
+  </style>
+  <!-- A marca vem depois dos valores de reserva, para sempre vencer -->
+  <link rel="stylesheet" href="marca.css">
+</head>
+<body>
+
+  <!-- 1 · Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <img class="logo" src="logo.png" alt="TEST Success">
+      <div class="quem">
+        <span id="avatar"></span>
+        <div><strong id="nome"></strong><span id="profissao"></span></div>
+      </div>
+      <h1 id="titulo"></h1>
+      <p class="sub" id="subtitulo"></p>
+      <a class="botao cta-botao" href="#contato"></a>
+    </div>
+  </header>
+
+  <!-- 2 · Problema -->
+  <section class="alt" id="secao-problema">
+    <div class="wrap">
+      <h2 id="problema-titulo"></h2>
+      <p id="problema-texto" class="apoio"></p>
+      <ul class="lista" id="problema-lista"></ul>
+      <p class="fecho" id="problema-fecho"></p>
+    </div>
+  </section>
+
+  <!-- 3 · Resultado -->
+  <section class="resultado" id="secao-resultado">
+    <div class="wrap">
+      <h2 id="resultado-titulo"></h2>
+      <p id="resultado-texto"></p>
+    </div>
+  </section>
+
+  <!-- 4 · Como funciona -->
+  <section class="alt" id="secao-metodo">
+    <div class="wrap">
+      <span class="metodo-nome" id="metodo-nome"></span>
+      <h2 id="metodo-titulo"></h2>
+      <p id="metodo-texto" class="apoio"></p>
+      <ol class="etapas" id="metodo-etapas"></ol>
+    </div>
+  </section>
+
+  <!-- 5 · Prova (ou demonstração, ou garantia) -->
+  <section class="prova" id="secao-prova">
+    <div class="wrap">
+      <h2 id="prova-titulo"></h2>
+      <div id="provas"></div>
+      <p id="demonstracao" class="apoio"></p>
+      <div class="garantia" id="garantia"><strong id="garantia-titulo"></strong><span id="garantia-texto"></span></div>
+    </div>
+  </section>
+
+  <!-- 6 · CTA final -->
+  <section class="cta alt" id="contato">
+    <div class="wrap">
+      <div class="card">
+        <h2 id="cta-titulo"></h2>
+        <p id="cta-texto" class="apoio"></p>
+        <p id="cta-urgencia" class="urgencia"></p>
+
+        <!-- Modo captação: formulário -->
+        <form id="form" novalidate hidden>
+          <label for="campo-nome">Seu nome</label>
+          <input type="text" id="campo-nome" name="nome" autocomplete="given-name" required>
+          <label for="campo-tel">Seu WhatsApp, com DDD</label>
+          <input type="tel" id="campo-tel" name="telefone" autocomplete="tel" inputmode="numeric" placeholder="(31) 98888-7777" required>
+          <label class="consent"><input type="checkbox" id="campo-consent" required> <span id="consent-texto"></span></label>
+          <p class="erro" id="erro"></p>
+          <button class="botao cta-botao" type="submit" id="botao-form"></button>
+        </form>
+
+        <!-- Modo contato direto: botão -->
+        <a class="botao cta-botao" id="botao-direto" href="#" hidden></a>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap" id="rodape"></div></footer>
+
+<script>
+(function () {
+  var C = window.PAGINA;
+  if (!C) { document.body.innerHTML = '<p style="padding:40px;font-family:sans-serif">Erro no config.js: confira aspas e vírgulas.</p>'; return; }
+
+  function el(id) { return document.getElementById(id); }
+  function txt(id, valor) { var e = el(id); if (!e) return; e.textContent = valor || ""; e.hidden = !valor; }
+  function lista(id, itens, monta) {
+    var box = el(id); box.innerHTML = "";
+    (itens || []).filter(Boolean).forEach(function (i) { box.appendChild(monta(i)); });
+    box.hidden = !box.children.length;
+    return box.children.length;
+  }
+
+  var modo = C.modoCTA === "direto" ? "direto" : "captacao";
+  var numero = String(C.whatsapp || "").replace(/\D/g, "");
+  function linkWhats(primeiroNome) {
+    var msg;
+    if (primeiroNome) {
+      msg = (C.mensagemWhatsApp || "").replace(/\{nome\}/g, primeiroNome);
+    } else if (C.mensagemWhatsAppDireto) {
+      msg = C.mensagemWhatsAppDireto;
+    } else {
+      // Sem nome (modo direto): tira o trecho que tem {nome} e arruma a maiúscula
+      msg = (C.mensagemWhatsApp || "").replace(/\s*[^,.!?]*\{nome\}[^,.!?]*[,.!?]?/g, "")
+        .replace(/([.!?]\s+)([a-zà-ú])/g, function (m, p, l) { return p + l.toUpperCase(); }).trim();
+    }
+    return "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
+  }
+
+  // Cabeçalho e textos
+  document.title = (C.titulo || "") + " · " + (C.nomeProfissional || "");
+  document.querySelector('meta[name="description"]').setAttribute("content", C.subtitulo || "");
+  txt("nome", C.nomeProfissional);
+  txt("profissao", C.profissao);
+  txt("titulo", C.titulo);
+  txt("subtitulo", C.subtitulo);
+  document.querySelectorAll(".cta-botao").forEach(function (b) { b.textContent = C.botao || "Quero conversar"; });
+
+  var avatar = el("avatar");
+  if (C.foto) {
+    var img = document.createElement("img"); img.src = C.foto; img.alt = C.nomeProfissional || ""; avatar.appendChild(img);
+  } else {
+    var ini = document.createElement("span"); ini.className = "inicial";
+    ini.textContent = (C.nomeProfissional || "?").trim().charAt(0).toUpperCase(); avatar.appendChild(ini);
+  }
+
+  // 2 · Problema
+  var P = C.problema || {};
+  txt("problema-titulo", P.titulo);
+  txt("problema-texto", P.texto);
+  var nP = lista("problema-lista", P.itens, function (t) { var li = document.createElement("li"); li.textContent = t; return li; });
+  txt("problema-fecho", P.fecho);
+  el("secao-problema").hidden = !(P.titulo || P.texto || nP);
+
+  // 3 · Resultado
+  var R = C.resultado || {};
+  txt("resultado-titulo", R.titulo);
+  txt("resultado-texto", R.texto);
+  el("secao-resultado").hidden = !(R.titulo || R.texto);
+
+  // 4 · Como funciona
+  var M = C.metodo || {};
+  txt("metodo-nome", M.nome);
+  txt("metodo-titulo", M.titulo);
+  txt("metodo-texto", M.texto);
+  var nE = lista("metodo-etapas", M.etapas, function (e) {
+    var li = document.createElement("li");
+    var s = document.createElement("strong"); s.textContent = e.nome || ""; li.appendChild(s);
+    if (e.ganho) { var g = document.createElement("span"); g.textContent = e.ganho; li.appendChild(g); }
+    return li;
+  });
+  el("secao-metodo").hidden = !(M.nome || M.titulo || M.texto || nE);
+
+  // 5 · Prova: só provas reais; sem elas, demonstração e garantia
+  var PR = C.prova || {};
+  var nProvas = lista("provas", (PR.depoimentos || []).filter(function (p) { return p && p.texto; }), function (p) {
+    var q = document.createElement("blockquote"); q.textContent = "“" + p.texto + "”";
+    if (p.autor) { var c = document.createElement("cite"); c.textContent = p.autor; q.appendChild(c); }
+    return q;
+  });
+  txt("demonstracao", PR.demonstracao);
+  var G = PR.garantia || {};
+  txt("garantia-titulo", G.titulo);
+  txt("garantia-texto", G.texto);
+  el("garantia").hidden = !(G.titulo || G.texto);
+  txt("prova-titulo", PR.titulo || (nProvas ? "Quem já passou por aqui" : ""));
+  el("secao-prova").hidden = !(nProvas || PR.demonstracao || G.texto);
+
+  // 6 · CTA final
+  var F = C.ctaFinal || {};
+  txt("cta-titulo", F.titulo);
+  txt("cta-texto", F.texto);
+  txt("cta-urgencia", F.urgencia);
+  txt("consent-texto", C.textoConsentimento);
+
+  var rodape = el("rodape");
+  rodape.textContent = "© " + new Date().getFullYear() + " " + (C.nomeProfissional || "");
+  if (C.politicaPrivacidade) {
+    rodape.appendChild(document.createTextNode(" · "));
+    var a = document.createElement("a"); a.href = C.politicaPrivacidade; a.textContent = "Política de privacidade"; rodape.appendChild(a);
+  }
+
+  // Pixel da Meta
+  var temPixel = /^\d{10,20}$/.test(String(C.pixelId || "").trim());
+  if (temPixel) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', String(C.pixelId).trim());
+    fbq('track', 'PageView');
+  }
+  function lead() {
+    var id = "lead-" + Date.now();
+    if (temPixel && window.fbq) fbq('track', 'Lead', { modo: modo }, { eventID: id });
+    window.__ultimoLead = { modo: modo, eventID: id }; // para o teste
+    return id;
+  }
+  function webhook(dados) {
+    if (!C.webhookUrl) return;
+    var params = new URLSearchParams(location.search);
+    dados.data = new Date().toISOString(); dados.pagina = location.href; dados.modo = modo;
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) { dados[k] = params.get(k) || ""; });
+    var corpo = JSON.stringify(dados);
+    try {
+      if (navigator.sendBeacon) navigator.sendBeacon(C.webhookUrl, new Blob([corpo], { type: "text/plain" }));
+      else fetch(C.webhookUrl, { method: "POST", body: corpo, keepalive: true, mode: "no-cors" });
+    } catch (err) {}
+  }
+  function vaiParaWhats(url) {
+    window.__ultimoWhats = url; // para o teste
+    if (C.modoTeste) return;    // no teste, não sai da página
+    setTimeout(function () { window.location.href = url; }, 800);
+  }
+
+  if (modo === "direto") {
+    // Todos os botões abrem o WhatsApp direto
+    var direto = el("botao-direto"); direto.hidden = false;
+    document.querySelectorAll(".cta-botao").forEach(function (b) {
+      if (b.tagName !== "A") return;
+      b.href = linkWhats("");
+      b.addEventListener("click", function (e) {
+        e.preventDefault(); lead(); webhook({}); vaiParaWhats(linkWhats(""));
+      });
+    });
+    return;
+  }
+
+  // Modo captação: formulário
+  var form = el("form"); form.hidden = false;
+  var tel = el("campo-tel");
+  tel.addEventListener("input", function () {
+    var d = tel.value.replace(/\D/g, "").slice(0, 11);
+    var f = d;
+    if (d.length > 2) f = "(" + d.slice(0, 2) + ") " + d.slice(2);
+    if (d.length > 7) f = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(-4);
+    tel.value = f;
+  });
+  var erro = el("erro");
+  function mostraErro(m) { erro.textContent = m; erro.classList.add("on"); }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    erro.classList.remove("on");
+    var nome = el("campo-nome").value.trim();
+    var digitos = tel.value.replace(/\D/g, "");
+    if (nome.length < 2) return mostraErro("Escreva o seu nome.");
+    if (digitos.length < 10) return mostraErro("Confira o seu WhatsApp, com DDD.");
+    if (!el("campo-consent").checked) return mostraErro("Marque a autorização para seguir.");
+
+    var botao = el("botao-form");
+    botao.disabled = true; botao.textContent = "Abrindo o WhatsApp…";
+    var primeiroNome = nome.split(/\s+/)[0];
+    lead();
+    webhook({ nome: nome, telefone: "55" + digitos });
+    vaiParaWhats(linkWhats(primeiroNome));
+  });
+})();
+</script>
+</body>
+</html>
