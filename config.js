@@ -79,7 +79,7 @@ window.PAGINA = {
   // Técnico (skills pagina-no-ar e rastreamento)
   whatsapp: "5521979564068", // dado pelo Sandro em 14/11
   pixelId: "1083250545574011", // pixel "Workshop", do print do Gerenciador de Eventos (25/11)
-  webhookUrl: "",
+  webhookUrl: "https://script.google.com/macros/s/AKfycbxvCPOIqZnOAHGjrUPguld4Xoujf6E3YfwQFimRJICENTyp-EXgjPq-JqW8uYZiJFu9/exec", // planilha "Leads · TEST Success" (25/11)
   politicaPrivacidade: "",
   modoTeste: false
 };
