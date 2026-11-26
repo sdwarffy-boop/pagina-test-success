@@ -3,6 +3,7 @@
 //  Textos da seção 3.1 do Dossiê (skill copy-da-pagina).
 //  RASCUNHO de 14/11: feito antes da fase 1 fechar. Promessa, garantia,
 //  urgência e depoimento entram quando a fase 1 estiver pronta.
+//  15/11: textos neutros em gênero, a pedido do Sandro (atende mulheres e homens).
 //  Cores e fontes ficam no marca.css (seção 3.2).
 //  Seção vazia some sozinha. Nunca coloque preço aqui: é página de captura.
 // ============================================================
@@ -25,7 +26,7 @@ window.PAGINA = {
     itens: [
       "Você entende inglês, mas no Speaking não sabe o que dizer quando o tempo começa a correr.",
       "No Writing, as ideias estão na sua cabeça, mas não saem organizadas do jeito que a prova cobra.",
-      "Você já estudou sozinha com conteúdo solto da internet e ainda não sabe se está perto da nota."
+      "Você já estudou por conta própria, com conteúdo solto da internet, e ainda não sabe se está perto da nota."
     ],
     fecho: "O problema não é o seu inglês. Muita gente chega aqui achando que precisa de um inglês muito superior ao que tem. Muitas vezes, o que falta é saber o que a prova espera e treinar do jeito certo."
   },
@@ -71,13 +72,13 @@ window.PAGINA = {
 
   // O contato
   modoCTA: "captacao",
-  mensagemWhatsApp: "Oi, Sandro! Sou a {nome}, vim pela sua página. Vou fazer o TOEFL para estudar fora e quero uma estratégia para chegar na nota que preciso. Podemos marcar uma conversa?",
+  mensagemWhatsApp: "Oi, Sandro! Aqui é {nome}, vim pela sua página. Vou fazer o TOEFL para estudar fora e quero uma estratégia para chegar na nota que preciso. Podemos marcar uma conversa?",
   mensagemWhatsAppDireto: "Oi, Sandro! Vim pela sua página. Vou fazer o TOEFL para estudar fora e quero uma estratégia para chegar na nota que preciso. Podemos marcar uma conversa?",
   textoConsentimento: "Autorizo o Sandro Dwarffy, da TEST Success, a falar comigo pelo WhatsApp sobre a minha preparação para o TOEFL.",
 
   // Técnico (skills pagina-no-ar e rastreamento)
   whatsapp: "5521979564068", // dado pelo Sandro em 14/11
-  pixelId: "",               // fica para a skill rastreamento
+  pixelId: "1083250545574011", // pixel "Workshop", do print do Gerenciador de Eventos (25/11)
   webhookUrl: "",
   politicaPrivacidade: "",
   modoTeste: false
